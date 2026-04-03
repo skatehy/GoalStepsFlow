@@ -1,6 +1,6 @@
 import { Notice, Plugin, WorkspaceLeaf } from "obsidian";
 import { GoalBoardView, VIEW_TYPE_GOAL_BOARD } from "./views/GoalBoardView";
-import { GoalPluginData } from "./types";
+import { Goal,GoalPluginData } from "./types";
 import { DEFAULT_DATA } from "./constants";
 export default class GoalTimelinePlugin extends Plugin {
   data: GoalPluginData;
@@ -16,14 +16,14 @@ export default class GoalTimelinePlugin extends Plugin {
     this.addCommand({
       id: "open-goal-board",
       name: "Open Goal Board",
-      callback: () => {
-        this.activateGoalBoardView();
+      callback: async () => {
+        await this.activateGoalBoardView();
       },
     });
 
-     this.addRibbonIcon("target", "Open goal board", async () => {
-    await this.activateGoalBoardView();
-  });
+    this.addRibbonIcon("target", "Open goal board", async () => {
+      await this.activateGoalBoardView();
+    });
 
     new Notice("GoalStepsFlow plugin loaded");
 
@@ -65,5 +65,28 @@ export default class GoalTimelinePlugin extends Plugin {
     }
 
     await workspace.revealLeaf(leaf);
+  }
+
+  async createNewGoal(title: string) {
+    const newGoal: Goal = {
+      id: crypto.randomUUID(),
+      title,
+      createdAt: new Date().toISOString(),
+      status: "todo",
+    };
+    
+    this.data.goals.push(newGoal);
+    await this.savePluginData();
+    this.refreshGoalBoardView();
+  }
+
+  refreshGoalBoardView() {
+    const leaves = this.app.workspace.getLeavesOfType(VIEW_TYPE_GOAL_BOARD);
+    for (const leaf of leaves) {
+      const view = leaf.view;
+      if (view instanceof GoalBoardView) {
+        view.render();
+      }
+    }
   }
 }

@@ -3,9 +3,9 @@ type Goal = {
   title: string;
   createdAt: string;
   deadline?: string;
-  status: "todo" | "in_progress" | "done" | "delayed";
-  description?: string;
-  stepIds: string[];
+  status: "todo" | "in_progress" | "done" ;
+  // description?: string;
+  // stepIds: string[];
 };
 
 type Step = {
@@ -13,9 +13,9 @@ type Step = {
   goalId: string;
   title: string;
   status: "todo" | "in_progress" | "done";
-  priority?: number;
-  estimatedEffort?: number;
-  dependsOn?: string[];
+  // priority?: number;
+  // estimatedEffort?: number;
+  // dependsOn?: string[];
 };
 
 type CyclePlan = {
