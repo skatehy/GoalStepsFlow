@@ -40,4 +40,9 @@ type TimelineItem = {
   status: "todo" | "done";
 };
 
-export type { Goal, Step, CyclePlan, TimelineItem };
+interface GoalPluginData {
+  goals: unknown[];
+  steps: unknown[];
+}
+
+export type { Goal, Step, CyclePlan, TimelineItem, GoalPluginData };
