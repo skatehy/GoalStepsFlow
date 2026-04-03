@@ -1,6 +1,7 @@
 import { Notice, Plugin, WorkspaceLeaf } from "obsidian";
 import { GoalBoardView, VIEW_TYPE_GOAL_BOARD } from "./views/GoalBoardView";
 import { GoalPluginData } from "./types";
+import { DEFAULT_DATA } from "./constants";
 export default class GoalTimelinePlugin extends Plugin {
   data: GoalPluginData;
 
@@ -50,7 +51,7 @@ export default class GoalTimelinePlugin extends Plugin {
     if (leaves.length > 0) {
       leaf = leaves[0];
     } else {
-      leaf = workspace.getRightLeaf(false);
+      leaf = workspace.getLeaf(true);
 
       if (!leaf) {
         new Notice("Failed to open goal board");
