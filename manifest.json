@@ -1,9 +1,9 @@
 {
-  "id": "timeflow-starter",
-  "name": "Timeflow Starter",
+  "id": "goal-steps-flow",
+  "name": "GoalStepsFlow",
   "version": "0.0.1",
   "minAppVersion": "1.5.0",
-  "description": "A starter Obsidian plugin for calendar and timeline-based task management.",
-  "author": "hybaba",
+  "description": "A goal-oriented task management plugin for Obsidian, supporting multi-level goals, step breakdown, period planning, and daily timeline scheduling.",
+  "author": "skatehy",
   "isDesktopOnly": false
 }

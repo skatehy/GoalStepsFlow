@@ -1,40 +1,43 @@
-import type { Plugin } from "obsidian";
-
-export type TaskStatus = "todo" | "done";
-
-export interface TimeflowTask {
+type Goal = {
   id: string;
   title: string;
-  date: string;      // YYYY-MM-DD
-  start: string;     // HH:mm
-  duration: number;  // minutes
-  status: TaskStatus;
-}
+  createdAt: string;
+  deadline?: string;
+  status: "todo" | "in_progress" | "done" | "delayed";
+  description?: string;
+  stepIds: string[];
+};
 
-export interface TimeflowSettings {
-  dayStartHour: number;
-  dayEndHour: number;
-  defaultDuration: number;
-}
+type Step = {
+  id: string;
+  goalId: string;
+  title: string;
+  status: "todo" | "in_progress" | "done";
+  priority?: number;
+  estimatedEffort?: number;
+  dependsOn?: string[];
+};
 
-export interface TimeflowStore {
-  settings: TimeflowSettings;
-  tasks: TimeflowTask[];
-}
+type CyclePlan = {
+  id: string;
+  name: string;
+  startDate: string;
+  durationDays: number;
+  assignments: {
+    date: string;
+    stepIds: string[];
+  }[];
+};
 
-export interface TimeflowPluginApi {
-  settings: TimeflowSettings;
-  selectedDate: string;
+type TimelineItem = {
+  id: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  title: string;
+  linkedGoalId?: string;
+  linkedStepId?: string;
+  status: "todo" | "done";
+};
 
-  saveStore(): Promise<void>;
-  refreshViews(): Promise<void>;
-
-  openAddTaskModal(date: string): void;
-  getTasksForDate(date: string): TimeflowTask[];
-
-  createTask(task: Omit<TimeflowTask, "id">): Promise<void>;
-  toggleTask(id: string): Promise<void>;
-  deleteTask(id: string): Promise<void>;
-}
-
-export type TimeflowPluginContext = Plugin & TimeflowPluginApi;
+export type { Goal, Step, CyclePlan, TimelineItem };

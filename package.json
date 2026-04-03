@@ -1,5 +1,5 @@
 {
-  "name": "obsidian-timeflow-starter",
+  "name": "goal-steps-flow",
   "version": "0.0.1",
   "description": "Starter plugin for timeline-based task management in Obsidian",
   "main": "main.js",
