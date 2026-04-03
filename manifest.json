@@ -1,0 +1,9 @@
+{
+  "id": "timeflow-starter",
+  "name": "Timeflow Starter",
+  "version": "0.0.1",
+  "minAppVersion": "1.5.0",
+  "description": "A starter Obsidian plugin for calendar and timeline-based task management.",
+  "author": "hybaba",
+  "isDesktopOnly": false
+}

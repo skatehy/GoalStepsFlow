@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# build output
+main.js
+main.js.map
+
+# local data / temp
+data.json
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# optional env files
+.env
+.env.*
+
+# TypeScript cache
+*.tsbuildinfo
