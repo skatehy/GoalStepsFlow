@@ -1,23 +1,23 @@
 export const DEFAULT_DATA: GoalPluginData = {
   goals: [
     {
-      id: "1",
-      title: "示例目标",
-      createdAt: new Date().toISOString(),
-      deadline: "2026-05-01",
+      id: "goal-1",
+      title: "Example Goal",
+      description: "This is an example goal.",
       status: "todo",
-      // description: "这是一个示例目标",
-      // stepIds: ["1", "2"],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     },
     {
-      id: "2",
-      title: "另一个目标",
-      createdAt: "2026-04-03",
+      id: "goal-2",
+      title: "Another Goal",
+      description: "This is another example goal.",
       status: "in_progress",
-      // description: "这是另一个示例目标",
-      // stepIds: ["3"], 
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days from now
     }
   ],
-  steps: [],
+  workItems: [],
 };
 export const VIEW_TYPE_GOAL_BOARD = "goal-board-view";

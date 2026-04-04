@@ -1,6 +1,6 @@
 import { Notice, Plugin, WorkspaceLeaf } from "obsidian";
 import { GoalBoardView, VIEW_TYPE_GOAL_BOARD } from "./views/GoalBoardView";
-import { Goal,GoalPluginData } from "./types";
+import { Goal,GoalPluginData,WorkItem } from "./types";
 import { DEFAULT_DATA } from "./constants";
 export default class GoalTimelinePlugin extends Plugin {
   data: GoalPluginData;
@@ -72,6 +72,7 @@ export default class GoalTimelinePlugin extends Plugin {
       id: crypto.randomUUID(),
       title,
       createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
       status: "todo",
     };
     
@@ -79,6 +80,7 @@ export default class GoalTimelinePlugin extends Plugin {
     await this.savePluginData();
     this.refreshGoalBoardView();
   }
+  
 
   refreshGoalBoardView() {
     const leaves = this.app.workspace.getLeavesOfType(VIEW_TYPE_GOAL_BOARD);

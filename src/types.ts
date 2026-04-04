@@ -1,48 +1,36 @@
-type Goal = {
+export type GoalStatus = "todo" | "in_progress" | "done" | "paused";
+
+export type Goal = {
   id: string;
   title: string;
+  description?: string;
+
+
+  status: GoalStatus;
+
   createdAt: string;
+  updatedAt: string;
   deadline?: string;
-  status: "todo" | "in_progress" | "done" ;
-  // description?: string;
-  // stepIds: string[];
 };
 
-type Step = {
+export type WorkItem = {
   id: string;
   goalId: string;
+  parentId:string | null;
+  
   title: string;
-  status: "todo" | "in_progress" | "done";
-  // priority?: number;
-  // estimatedEffort?: number;
-  // dependsOn?: string[];
-};
+  description?: string;
 
-type CyclePlan = {
-  id: string;
-  name: string;
-  startDate: string;
-  durationDays: number;
-  assignments: {
-    date: string;
-    stepIds: string[];
-  }[];
-};
+  status: GoalStatus;
+  layerHint: "goal" | "week" | "day";
 
-type TimelineItem = {
-  id: string;
-  date: string;
-  startTime: string;
-  endTime: string;
-  title: string;
-  linkedGoalId?: string;
-  linkedStepId?: string;
-  status: "todo" | "done";
-};
-
-interface GoalPluginData {
-  goals: unknown[];
-  steps: unknown[];
+  createdAt: string;
+  updatedAt: string;
+  deadline?: string;
 }
 
-export type { Goal, Step, CyclePlan, TimelineItem, GoalPluginData };
+export interface GoalPluginData {
+  goals: Goal[];
+  workItems: WorkItem[];
+}
+

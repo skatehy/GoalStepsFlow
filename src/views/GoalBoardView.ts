@@ -71,8 +71,18 @@ export class GoalBoardView extends ItemView {
       text: `状态: ${goal.status}`,
     });
 
+    if (goal.description) {
+      cardEl.createEl("p", {
+        text: `描述: ${goal.description}`,
+      });
+    }
+
     cardEl.createEl("p", {
       text: `创建日期: ${goal.createdAt}`,
+    });
+
+    cardEl.createEl("p", {
+      text: `更新时间: ${goal.updatedAt}`,
     });
 
     if (goal.deadline) {
