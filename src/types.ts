@@ -5,7 +5,6 @@ export type Goal = {
   title: string;
   description?: string;
 
-
   status: GoalStatus;
 
   createdAt: string;
@@ -29,8 +28,20 @@ export type WorkItem = {
   deadline?: string;
 }
 
+export type CreateGoal = {
+  title: string;
+  description?: string;
+  deadline?: string; 
+  status?: GoalStatus;
+}
+
+export type UpdateGoalInput = Partial<
+  Pick<Goal, "title" | "description" | "status" | "deadline">
+>;
+
 export interface GoalPluginData {
   goals: Goal[];
   workItems: WorkItem[];
 }
+
 

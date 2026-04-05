@@ -3,7 +3,7 @@ import { GoalBoardView, VIEW_TYPE_GOAL_BOARD } from "./views/GoalBoardView";
 import { Goal,GoalPluginData,WorkItem } from "./types";
 import { DEFAULT_DATA } from "./constants";
 export default class GoalTimelinePlugin extends Plugin {
-  data: GoalPluginData;
+  data: GoalPluginData = DEFAULT_DATA;
 
   async onload() {
     await this.loadPluginData();
