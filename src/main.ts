@@ -80,7 +80,7 @@ async createNewGoal(input: CreateGoalInput) {
     id: crypto.randomUUID(),
     title: title,
     description: input.description?.trim()||undefined,
-    deadline: input.deadline,
+    deadline: input.deadline?.trim()||undefined,
     status: input.status ?? "todo",
     createdAt: now,
     updatedAt: now,

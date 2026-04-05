@@ -8,6 +8,10 @@ export class CreateGoalModal extends Modal {
   private statusValue: GoalStatus = "todo";
   private onSubmit: (input: CreateGoalInput) => Promise<void> | void;
 
+  private isValidDateString(value: string): boolean {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
   constructor(app: App, onSubmit: (input: CreateGoalInput) => Promise<void> | void) {
     super(app);
     this.onSubmit = onSubmit;
@@ -41,11 +45,11 @@ export class CreateGoalModal extends Modal {
     
     new Setting(contentEl)
       .setName("截止日期")
-      .setDesc("可选")  
+      .setDesc("可选, 格式为YYYY-MM-DD")
       .addText((text) => {
-        text.inputEl.type = "date";
+        text.setPlaceholder("例如2024-12-31");
         text.onChange((value) => {
-          this.deadlineValue = value;
+          this.deadlineValue = value.trim();
         });
       });
 
@@ -74,14 +78,18 @@ export class CreateGoalModal extends Modal {
           return;
         }
 
+        if(this.deadlineValue && !this.isValidDateString(this.deadlineValue)) {
+          new Notice("截止日期格式不正确，请使用YYYY-MM-DD格式");
+          return;
+        }
+
         await this.onSubmit({
           title,
-          description:this.descriptionValue.trim()||undefined,
-          deadline:this.deadlineValue.trim()||undefined,
+          description:this.descriptionValue,
+          deadline:this.deadlineValue,
           status:this.statusValue,
-
         });
-        
+
         this.close();
       });
     });
