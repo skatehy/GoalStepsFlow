@@ -1,6 +1,6 @@
 import { Notice, Plugin, WorkspaceLeaf } from "obsidian";
 import { GoalBoardView, VIEW_TYPE_GOAL_BOARD } from "./views/GoalBoardView";
-import { Goal,GoalPluginData,WorkItem } from "./types";
+import { Goal, GoalPluginData, WorkItem, CreateGoalInput } from "./types";
 import { DEFAULT_DATA } from "./constants";
 export default class GoalTimelinePlugin extends Plugin {
   data: GoalPluginData = DEFAULT_DATA;
@@ -67,21 +67,30 @@ export default class GoalTimelinePlugin extends Plugin {
     await workspace.revealLeaf(leaf);
   }
 
-  async createNewGoal(title: string) {
-    const newGoal: Goal = {
-      id: crypto.randomUUID(),
-      title,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      status: "todo",
-    };
+async createNewGoal(input: CreateGoalInput) {
+  const now = new Date().toISOString();
+
+  const title = input.title.trim();
+  if (title.length === 0) {
+    new Notice("目标标题不能为空");
+    return;
+  }
+
+  const newGoal: Goal = {
+    id: crypto.randomUUID(),
+    title: title,
+    description: input.description?.trim()||undefined,
+    deadline: input.deadline,
+    status: input.status ?? "todo",
+    createdAt: now,
+    updatedAt: now,
+  };
     
-    this.data.goals.push(newGoal);
-    await this.savePluginData();
-    this.refreshGoalBoardView();
+  this.data.goals.push(newGoal);
+  await this.savePluginData();
+  this.refreshGoalBoardView();
   }
   
-
   refreshGoalBoardView() {
     const leaves = this.app.workspace.getLeavesOfType(VIEW_TYPE_GOAL_BOARD);
     for (const leaf of leaves) {

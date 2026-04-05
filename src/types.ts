@@ -28,7 +28,7 @@ export type WorkItem = {
   deadline?: string;
 }
 
-export type CreateGoal = {
+export type CreateGoalInput = {
   title: string;
   description?: string;
   deadline?: string; 

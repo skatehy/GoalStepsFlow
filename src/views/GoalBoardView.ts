@@ -1,6 +1,6 @@
 import { ItemView, Notice, WorkspaceLeaf } from "obsidian";
 import GoalTimelinePlugin from "../main";
-import { Goal } from "types";
+import { Goal, CreateGoalInput } from "../types";
 import { CreateGoalModal } from "../modals/CreateGoalModal";
 
 export const VIEW_TYPE_GOAL_BOARD = "goal-board-view";
@@ -56,8 +56,8 @@ export class GoalBoardView extends ItemView {
     const addGoalBtn = toolbarEl.createEl("button", { text: "添加目标" });
 
     addGoalBtn.addEventListener("click", () => {
-      new CreateGoalModal(this.app,async (title: string) => {
-        await this.plugin.createNewGoal(title.trim());
+      new CreateGoalModal(this.app,async (input: CreateGoalInput) => {
+        await this.plugin.createNewGoal(input);
       }).open();
     });
   }
