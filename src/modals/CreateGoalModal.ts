@@ -1,6 +1,6 @@
 import { App, Modal, Notice, Setting } from "obsidian";
 import { CreateGoalInput,GoalStatus } from "types";
-
+import { getI18nStrings } from "../i18n";
 
 export class CreateGoalModal extends Modal {
   private titleValue = "";
@@ -20,24 +20,25 @@ export class CreateGoalModal extends Modal {
 
   onOpen() {
     const { contentEl } = this;
+    const t = getI18nStrings();
 
     contentEl.empty();
-    contentEl.createEl("h2", { text: "新建目标" });
+    contentEl.createEl("h2", { text: t.goal.form.createGoal });
 
     new Setting(contentEl)
-      .setName("目标标题")
+      .setName(t.goal.form.titleLabel)
       .addText((text) => {
-        text.setPlaceholder("请输入目标标题");
+        text.setPlaceholder(t.goal.form.titleLabel);
         text.onChange((value) => {
           this.titleValue = value;
         });    
       });
 
     new Setting(contentEl)
-      .setName("目标描述")
-      .setDesc("可选")
+      .setName(t.goal.form.descriptionLabel)
+      .setDesc(t.common.optional)
       .addTextArea((text) => {
-        text.setPlaceholder("请输入目标描述");
+        text.setPlaceholder(t.goal.form.descriptionLabel);
         text.inputEl.rows = 3;
         text.onChange((value) => {
           this.descriptionValue = value;
@@ -45,22 +46,22 @@ export class CreateGoalModal extends Modal {
       });
     
     new Setting(contentEl)
-      .setName("截止日期")
-      .setDesc("可选, 格式为YYYY-MM-DD")
+      .setName(t.goal.form.deadlineLabel)
+      .setDesc(t.common.optional)
       .addText((text) => {
-        text.setPlaceholder("例如2024-12-31");
+        text.setPlaceholder(t.goal.form.deadlineLabel);
         text.onChange((value) => {
           this.deadlineValue = value.trim();
         });
       });
 
     new Setting(contentEl)
-      .setName("状态")
+      .setName(t.goal.form.statusLabel)
       .addDropdown((dropdown) => {
-        dropdown.addOption("todo", "待办");
-        dropdown.addOption("in_progress", "进行中");
-        dropdown.addOption("done", "已完成");
-        dropdown.addOption("paused", "暂停");
+        dropdown.addOption("todo", t.goal.statusLabels.todo);
+        dropdown.addOption("in_progress", t.goal.statusLabels.in_progress);
+        dropdown.addOption("done", t.goal.statusLabels.done);
+        dropdown.addOption("paused", t.goal.statusLabels.paused);
         dropdown.onChange((value) => {
           this.statusValue = value as GoalStatus;
         });
@@ -68,19 +69,19 @@ export class CreateGoalModal extends Modal {
 
 
     new Setting(contentEl).addButton((btn) => {
-      btn.setButtonText("创建");
+      btn.setButtonText(t.common.create);
       btn.setCta();
 
       btn.onClick(async () => {
         const title = this.titleValue.trim();
 
         if (!title) {
-          new Notice("目标标题不能为空");
+          new Notice(t.goal.validation.emptyTitle);
           return;
         }
 
         if(this.deadlineValue && !this.isValidDateString(this.deadlineValue)) {
-          new Notice("截止日期格式不正确，请使用YYYY-MM-DD格式");
+          new Notice(t.goal.validation.invalidDeadline);
           return;
         }
 
