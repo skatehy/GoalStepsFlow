@@ -1,6 +1,7 @@
 import { App, Modal, Notice, Setting } from "obsidian";
 import { CreateGoalInput,GoalStatus } from "types";
 
+
 export class CreateGoalModal extends Modal {
   private titleValue = "";
   private descriptionValue = "";
