@@ -1,0 +1,149 @@
+.goal-board-view {
+  /* background: #171b22; */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.goal-board-view h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.goal-board-toolbar {
+  margin-bottom: 14px;
+}
+
+.goal-board-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  /* background: #171b22; */
+  border: 1px solid rgba(108, 32, 32, 0.097);
+  align-items: start;
+}
+
+.goal-board-section {
+  border-radius: 14px;
+  padding: 12px;
+  min-width: 0;
+  border: 1px solid rgba(108, 32, 32, 0.097);
+}
+
+.goal-board-section h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.goal-board-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goal-card {
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.goal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+/* Todo */
+.goal-board-section--todo {
+  /* background: rgba(213, 120, 140, 0.634);
+  border-color: rgba(255, 99, 132, 0.18); */
+}
+
+.goal-board-section--todo .goal-card {
+    background:
+        radial-gradient(
+        circle at top left,
+        rgba(210, 225, 255, 0.22) 0%,
+        rgba(210, 225, 255, 0) 38%
+        ),
+        linear-gradient(
+        135deg,
+        rgba(155, 179, 222, 0.40) 0%,
+        rgba(120, 150, 210, 0.30) 30%,
+        rgba(88, 118, 180, 0.22) 100%
+        );
+}
+
+/* In Progress */
+.goal-board-section--in-progress {
+  /* background: rgba(213, 120, 140, 0.634);
+  border-color: rgba(214, 110, 72, 0.34);; */
+}
+
+.goal-board-section--in-progress .goal-card {
+    background:
+        radial-gradient(
+        circle at top left,
+        rgba(210, 225, 255, 0.22) 0%,
+        rgba(210, 225, 255, 0) 38%
+        ),
+        linear-gradient(
+        135deg,
+        rgba(155, 179, 222, 0.40) 0%,
+        rgba(120, 150, 210, 0.30) 30%,
+        rgba(88, 118, 180, 0.22) 100%
+        );
+}
+
+/* Paused */
+.goal-board-section--paused {
+  /* background: rgba(164, 92, 140, 0.18);
+  border-color: rgba(70, 196, 106, 0.18); */
+}
+
+.goal-board-section--paused .goal-card {
+  background:
+        radial-gradient(
+        circle at top left,
+        rgba(210, 225, 255, 0.22) 0%,
+        rgba(210, 225, 255, 0) 38%
+        ),
+        linear-gradient(
+        135deg,
+        rgba(155, 179, 222, 0.40) 0%,
+        rgba(120, 150, 210, 0.30) 30%,
+        rgba(88, 118, 180, 0.22) 100%
+        );
+}
+
+/* Done */
+.goal-board-section--done {
+  /* background: rgba(213, 120, 140, 0.18);
+  border-color: rgba(76, 175, 80, 0.18); */
+}
+
+.goal-board-section--done .goal-card {
+  background:
+        radial-gradient(
+        circle at top left,
+        rgba(210, 225, 255, 0.22) 0%,
+        rgba(210, 225, 255, 0) 38%
+        ),
+        linear-gradient(
+        135deg,
+        rgba(155, 179, 222, 0.40) 0%,
+        rgba(120, 150, 210, 0.30) 30%,
+        rgba(88, 118, 180, 0.22) 100%
+        );
+}
+
+@media (max-width: 900px) {
+  .goal-board-sections {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}

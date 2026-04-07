@@ -41,25 +41,27 @@ export class GoalBoardView extends ItemView {
     
     this.contentEl.empty();
 
-    this.contentEl.createEl("h2", { text: t.goal.board.title });
+    const boardEl = this.contentEl.createDiv({ cls: "goal-board-view" });
 
-    this.renderToolbar(t);
+    boardEl.createEl("h2", { text: t.goal.board.title });
+
+    this.renderToolbar(boardEl,t);
 
     if (goals.length === 0) {
-      this.contentEl.createEl("p", { text: t.goal.board.noGoals });
+      boardEl.createEl("p", { text: t.goal.board.noGoals });
       return;
     }
 
-    const sectionsEl = this.contentEl.createDiv({ cls: "goal-board-sections" });
+    const sectionsEl = boardEl.createDiv({ cls: "goal-board-sections" });
 
-    this.renderStatusSection(sectionsEl,t.goal.statusLabels.todo, todoGoals, t);
-    this.renderStatusSection(sectionsEl,t.goal.statusLabels.in_progress, inProgressGoals, t);
-    this.renderStatusSection(sectionsEl,t.goal.statusLabels.paused, pausedGoals, t);
-    this.renderStatusSection(sectionsEl,t.goal.statusLabels.done, doneGoals, t);
+    this.renderStatusSection(sectionsEl,t.goal.statusLabels.todo, "goal-board-section--todo", todoGoals, t);
+    this.renderStatusSection(sectionsEl,t.goal.statusLabels.in_progress, "goal-board-section--in-progress", inProgressGoals, t);
+    this.renderStatusSection(sectionsEl,t.goal.statusLabels.paused, "goal-board-section--paused", pausedGoals, t);
+    this.renderStatusSection(sectionsEl,t.goal.statusLabels.done, "goal-board-section--done", doneGoals, t);
   }
 
-  renderToolbar(t: ReturnType<typeof getI18nStrings>) {
-    const toolbarEl = this.contentEl.createDiv({ cls: "goal-board-toolbar" });
+  renderToolbar(container: HTMLElement, t: ReturnType<typeof getI18nStrings>) {
+    const toolbarEl = container.createDiv({ cls: "goal-board-toolbar" });
 
     const addGoalBtn = toolbarEl.createEl("button", { text: t.goal.board.addGoal });
 
@@ -73,19 +75,24 @@ export class GoalBoardView extends ItemView {
   private renderStatusSection(
     container: HTMLElement,
     sectionTitle: string,
+    sectionClass: string, 
     goals: Goal[],
     t: ReturnType<typeof getI18nStrings>
   ) {
     if(goals.length === 0) {
       return;
     }
-    
+
     const sectionEl = container.createDiv({ cls: "goal-board-section" });
+
+    sectionEl.addClass(sectionClass);
 
     sectionEl.createEl("h3", { text: sectionTitle });
 
+      const listEl = sectionEl.createDiv({ cls: "goal-board-list" });
+
     for (const goal of goals) {
-      this.renderGoalCard(sectionEl, goal, t);
+      this.renderGoalCard(listEl, goal, t);
     }
   }
 
