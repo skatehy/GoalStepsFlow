@@ -1,10 +1,6 @@
 # dependencies
 node_modules/
 
-# build output
-main.js
-main.js.map
-
 # local data / temp
 data.json
 *.log
@@ -19,3 +15,6 @@ Thumbs.db
 
 # TypeScript cache
 *.tsbuildinfo
+
+# others
+project-development-status.txt
