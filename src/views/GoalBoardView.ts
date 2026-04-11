@@ -89,7 +89,7 @@ export class GoalBoardView extends ItemView {
 
     sectionEl.createEl("h3", { text: sectionTitle });
 
-      const listEl = sectionEl.createDiv({ cls: "goal-board-list" });
+    const listEl = sectionEl.createDiv({ cls: "goal-board-list" });
 
     for (const goal of goals) {
       this.renderGoalCard(listEl, goal, t);

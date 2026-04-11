@@ -2,6 +2,7 @@ import { Notice, Plugin, WorkspaceLeaf } from "obsidian";
 import { GoalBoardView, VIEW_TYPE_GOAL_BOARD } from "./views/GoalBoardView";
 import { Goal, GoalPluginData, WorkItem, CreateGoalInput } from "./types";
 import { DEFAULT_DATA } from "./constants";
+import { formatDateTime } from "./utils/time";
 export default class GoalTimelinePlugin extends Plugin {
   data: GoalPluginData = DEFAULT_DATA;
 
@@ -68,7 +69,7 @@ export default class GoalTimelinePlugin extends Plugin {
   }
 
 async createNewGoal(input: CreateGoalInput) {
-  const now = new Date().toISOString();
+  const now = formatDateTime();
 
   const title = input.title.trim();
   if (title.length === 0) {
