@@ -6,6 +6,7 @@ export type I18nStrings = {
   common: {
     create: string;
     edit: string;
+    delete: string;
     save: string;
     cancel: string;
     optional: string;
@@ -15,6 +16,7 @@ export type I18nStrings = {
     form: {
       createGoal: string;
       editGoal: string;
+      deleteGoal: string;
       titleLabel: string;
       descriptionLabel: string;
       deadlineLabel: string;
@@ -25,6 +27,7 @@ export type I18nStrings = {
       title: string;
       addGoal: string;
       noGoals: string;
+      deleteConfirm: string;
     };
 
     detail: {
@@ -38,6 +41,7 @@ export type I18nStrings = {
     validation: {
       emptyTitle: string;
       invalidDeadline: string;
+      notfoundGoal: string;
     };
 
     statusLabels: Record<GoalStatus, string>;
@@ -48,6 +52,7 @@ export const zhCN: I18nStrings = {
   common: {
     create: "创建",
     edit: "编辑",
+    delete: "删除",
     save: "保存",
     cancel: "取消",
     optional: "可选",
@@ -57,6 +62,7 @@ export const zhCN: I18nStrings = {
     form: {
       createGoal: "创建目标",
       editGoal: "编辑目标",
+      deleteGoal: "删除目标",
       titleLabel: "目标标题",
       descriptionLabel: "目标描述",
       deadlineLabel: "截止日期",
@@ -67,6 +73,7 @@ export const zhCN: I18nStrings = {
       title: "目标看板",
       addGoal: "添加目标",
       noGoals: "暂无目标",
+      deleteConfirm: "确定要删除这个目标吗？",
     },
 
     detail: {
@@ -80,6 +87,7 @@ export const zhCN: I18nStrings = {
     validation: {
       emptyTitle: "目标标题不能为空",
       invalidDeadline: "截止日期格式应为 YYYY-MM-DD",
+      notfoundGoal: "未找到目标",
     },
 
     statusLabels: {
@@ -95,6 +103,7 @@ export const enUS: I18nStrings = {
   common: {
     create: "Create",
     edit: "Edit",
+    delete: "Delete",
     save: "Save",
     cancel: "Cancel",
     optional: "Optional",
@@ -104,6 +113,7 @@ export const enUS: I18nStrings = {
     form: {
       createGoal: "Create Goal",
       editGoal: "Edit Goal",
+      deleteGoal: "Delete Goal",
       titleLabel: "Goal Title",
       descriptionLabel: "Goal Description",
       deadlineLabel: "Deadline",
@@ -114,6 +124,7 @@ export const enUS: I18nStrings = {
       title: "Goal Board",
       addGoal: "Add Goal",
       noGoals: "No goals yet",
+      deleteConfirm: "Are you sure you want to delete this goal?",
     },
 
     detail: {
@@ -127,6 +138,7 @@ export const enUS: I18nStrings = {
     validation: {
       emptyTitle: "Goal title cannot be empty",
       invalidDeadline: "Deadline must be in YYYY-MM-DD format",
+      notfoundGoal: "Goal not found",
     },
 
     statusLabels: {

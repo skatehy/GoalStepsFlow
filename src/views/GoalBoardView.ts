@@ -1,6 +1,7 @@
 import { ItemView, WorkspaceLeaf } from "obsidian";
 import { EditGoalModal } from "../modals/EditGoalModal";
 import { CreateGoalModal } from "../modals/CreateGoalModal";
+import { DeleteGoalModal } from "../modals/DeleteGoalModal"
 import { getI18nStrings } from "../i18n";
 import GoalTimelinePlugin from "../main";
 import { CreateGoalInput, Goal } from "../types";
@@ -141,6 +142,17 @@ export class GoalBoardView extends ItemView {
       new EditGoalModal(this.app, goal, async (input) => {
         await this.plugin.updateGoal(goal.id, input);
       }).open();
-    })
+    });
+
+    const deleteBtn = actionsEl.createEl("button", {
+      cls: "goal-card-delete-button",
+      text: t.common.delete,
+    });
+
+    deleteBtn.addEventListener("click",async() => {
+      new DeleteGoalModal(this.app, goal, async() =>{
+          await this.plugin.deleteGoal(goal.id);
+      }).open();
+    });
   }
 }

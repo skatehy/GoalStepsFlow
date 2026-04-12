@@ -67,6 +67,16 @@
   min-width: 72px;
 }
 
+.goal-card-delete-button {
+  background: rgba(220, 70, 70, 0.14);
+  border: 1px solid rgba(220, 70, 70, 0.35);
+  color: var(--text-normal);
+}
+
+.goal-card-delete-button:hover {
+  background: rgba(220, 70, 70, 0.22);
+}
+
 .goal-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);

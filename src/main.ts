@@ -119,6 +119,23 @@ export default class GoalTimelinePlugin extends Plugin {
     await this.savePluginData();
     this.refreshGoalBoardView();
   }
+  
+  async deleteGoal(goalId: string){
+    const t = getI18nStrings();
+
+    const existingGoal = this.data.goals.find((goal) => goal.id === goalId);
+
+    if(!existingGoal){
+      new Notice(t.goal.validation.notfoundGoal);
+      return;
+    }
+
+    this.data.goals = this.data.goals.filter((goal) => goal.id != goalId);
+    this.data.workItems = this.data.workItems.filter((item) => item.goalId !== goalId);
+
+    await this.savePluginData();
+    this.refreshGoalBoardView();
+  }
 
   refreshGoalBoardView() {
     const leaves = this.app.workspace.getLeavesOfType(VIEW_TYPE_GOAL_BOARD);
