@@ -53,6 +53,20 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.goal-card p {
+  margin: 6px 0;
+}
+
+.goal-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.goal-card-actions button {
+  min-width: 72px;
+}
+
 .goal-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);

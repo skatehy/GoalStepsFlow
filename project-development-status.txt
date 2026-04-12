@@ -4,8 +4,8 @@
 - deadline 改为 YYYY-MM-DD 文本输入
 - 已完成 i18n.ts 和状态显示翻译
 - 已完成GoalBored目标看板中分栏目显示（Todo,In Progress,Paused,Done）和基础style.css
+- 已完成项目日期日期字符串优化
 - 下一步更新：
-    - 项目日期日期字符串优化
     - Goal的编辑与删除
 
 你需要：
