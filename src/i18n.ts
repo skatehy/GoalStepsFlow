@@ -42,6 +42,7 @@ export type I18nStrings = {
       emptyTitle: string;
       invalidDeadline: string;
       notfoundGoal: string;
+      notfoundWorkItem: string;
     };
 
     statusLabels: Record<GoalStatus, string>;
@@ -88,6 +89,7 @@ export const zhCN: I18nStrings = {
       emptyTitle: "目标标题不能为空",
       invalidDeadline: "截止日期格式应为 YYYY-MM-DD",
       notfoundGoal: "未找到目标",
+      notfoundWorkItem: "未找到目标子项",
     },
 
     statusLabels: {
@@ -139,6 +141,7 @@ export const enUS: I18nStrings = {
       emptyTitle: "Goal title cannot be empty",
       invalidDeadline: "Deadline must be in YYYY-MM-DD format",
       notfoundGoal: "Goal not found",
+      notfoundWorkItem: "WorkItem not found",
     },
 
     statusLabels: {
