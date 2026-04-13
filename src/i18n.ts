@@ -9,6 +9,9 @@ export type I18nStrings = {
     delete: string;
     save: string;
     cancel: string;
+    expand: string;
+    collapse: string;
+    clickToEdit: string;
     optional: string;
   };
 
@@ -46,9 +49,12 @@ export type I18nStrings = {
 
     statusLabels: Record<GoalStatus, string>;
   };
+
   workItem: {
     form: {
       createWorkItem: string;
+      editWorkItem: string;
+      deleteWorkItem: string;
       titleLabel: string;
       descriptionLabel: string;
       deadlineLabel: string;
@@ -56,8 +62,10 @@ export type I18nStrings = {
     };
 
     board: {
+      sectionTitle: string;
       noWorkItem: string;
-    }
+      deleteConfirm: string;
+    };
 
     validation: {
       emptyTitle: string;
@@ -77,6 +85,9 @@ export const zhCN: I18nStrings = {
     delete: "删除",
     save: "保存",
     cancel: "取消",
+    expand: "展开",
+    collapse: "收起",
+    clickToEdit: "点击编辑",
     optional: "可选",
   },
 
@@ -119,24 +130,29 @@ export const zhCN: I18nStrings = {
       done: "已完成",
     },
   },
+
   workItem: {
     form: {
-      createWorkItem: "创建目标子项",
-      titleLabel: "子项标题",
-      descriptionLabel: "子项描述",
+      createWorkItem: "创建 WorkItem",
+      editWorkItem: "编辑 WorkItem",
+      deleteWorkItem: "删除 WorkItem",
+      titleLabel: "WorkItem 标题",
+      descriptionLabel: "WorkItem 描述",
       deadlineLabel: "截止日期",
       statusLabel: "状态",
     },
 
     board: {
-      noWorkItem: "暂无目标子项",
+      sectionTitle: "WorkItems",
+      noWorkItem: "暂无 WorkItem",
+      deleteConfirm: "确定要删除这个 WorkItem 吗？",
     },
 
     validation: {
-      emptyTitle: "目标标题不能为空",
+      emptyTitle: "WorkItem 标题不能为空",
       invalidDeadline: "截止日期格式应为 YYYY-MM-DD",
       notfoundGoal: "未找到目标",
-      notfoundWorkItem: "未找到目标子项",
+      notfoundWorkItem: "未找到 WorkItem",
     },
 
     statusLabels: {
@@ -155,6 +171,9 @@ export const enUS: I18nStrings = {
     delete: "Delete",
     save: "Save",
     cancel: "Cancel",
+    expand: "Expand",
+    collapse: "Collapse",
+    clickToEdit: "Click to edit",
     optional: "Optional",
   },
 
@@ -197,9 +216,12 @@ export const enUS: I18nStrings = {
       done: "Done",
     },
   },
+
   workItem: {
     form: {
       createWorkItem: "Create WorkItem",
+      editWorkItem: "Edit WorkItem",
+      deleteWorkItem: "Delete WorkItem",
       titleLabel: "WorkItem Title",
       descriptionLabel: "WorkItem Description",
       deadlineLabel: "Deadline",
@@ -207,11 +229,13 @@ export const enUS: I18nStrings = {
     },
 
     board: {
+      sectionTitle: "WorkItems",
       noWorkItem: "No work items yet",
+      deleteConfirm: "Are you sure you want to delete this work item?",
     },
-    
+
     validation: {
-      emptyTitle: "Goal title cannot be empty",
+      emptyTitle: "WorkItem title cannot be empty",
       invalidDeadline: "Deadline must be in YYYY-MM-DD format",
       notfoundGoal: "Goal not found",
       notfoundWorkItem: "WorkItem not found",
