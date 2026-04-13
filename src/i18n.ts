@@ -47,6 +47,24 @@ export type I18nStrings = {
 
     statusLabels: Record<GoalStatus, string>;
   };
+  workItem: {
+    form: {
+      createWorkItem: string;
+      titleLabel: string;
+      descriptionLabel: string;
+      deadlineLabel: string;
+      statusLabel: string;
+    };
+
+    validation: {
+      emptyTitle: string;
+      invalidDeadline: string;
+      notfoundGoal: string;
+      notfoundWorkItem: string;
+    };
+
+    statusLabels: Record<GoalStatus, string>;
+  };
 };
 
 export const zhCN: I18nStrings = {
@@ -83,6 +101,29 @@ export const zhCN: I18nStrings = {
       createdAt: "创建时间",
       updatedAt: "更新时间",
       deadline: "截止日期",
+    },
+
+    validation: {
+      emptyTitle: "目标标题不能为空",
+      invalidDeadline: "截止日期格式应为 YYYY-MM-DD",
+      notfoundGoal: "未找到目标",
+      notfoundWorkItem: "未找到目标子项",
+    },
+
+    statusLabels: {
+      todo: "待办",
+      in_progress: "进行中",
+      paused: "暂停",
+      done: "已完成",
+    },
+  },
+  workItem: {
+    form: {
+      createWorkItem: "创建目标子项",
+      titleLabel: "子项标题",
+      descriptionLabel: "子项描述",
+      deadlineLabel: "截止日期",
+      statusLabel: "状态",
     },
 
     validation: {
@@ -144,6 +185,29 @@ export const enUS: I18nStrings = {
       notfoundWorkItem: "WorkItem not found",
     },
 
+    statusLabels: {
+      todo: "To do",
+      in_progress: "In progress",
+      paused: "Paused",
+      done: "Done",
+    },
+  },
+  workItem: {
+    form: {
+      createWorkItem: "Create WorkItem",
+      titleLabel: "WorkItem Title",
+      descriptionLabel: "WorkItem Description",
+      deadlineLabel: "Deadline",
+      statusLabel: "Status",
+    },
+
+    validation: {
+      emptyTitle: "Goal title cannot be empty",
+      invalidDeadline: "Deadline must be in YYYY-MM-DD format",
+      notfoundGoal: "Goal not found",
+      notfoundWorkItem: "WorkItem not found",
+    },
+    
     statusLabels: {
       todo: "To do",
       in_progress: "In progress",

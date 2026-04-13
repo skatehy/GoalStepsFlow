@@ -149,7 +149,7 @@ export default class GoalTimelinePlugin extends Plugin {
     return this.data.workItems.filter((item) => item.goalId === goalId && item.parentId === null);
   }
 
-  async createWorkItems(input: CreateWorkItemInput){
+  async createWorkItem(input: CreateWorkItemInput){
     const t = getI18nStrings();
     const now = formatDateTime();
 

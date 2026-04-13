@@ -5,6 +5,7 @@ import { DeleteGoalModal } from "../modals/DeleteGoalModal"
 import { getI18nStrings } from "../i18n";
 import GoalTimelinePlugin from "../main";
 import { CreateGoalInput, Goal } from "../types";
+import { CreateWorkItemModal } from "modals/CreateWorkItemModal";
 
 export const VIEW_TYPE_GOAL_BOARD = "goal-board-view";
 
@@ -154,5 +155,20 @@ export class GoalBoardView extends ItemView {
           await this.plugin.deleteGoal(goal.id);
       }).open();
     });
+
+    const createWorkItemBtn = actionsEl.createEl("button", {
+      cls: "workitem-create-button",
+      text: t.common.create,
+    })
+
+    createWorkItemBtn.addEventListener("click",async() => {
+      new CreateWorkItemModal(this.app, async(input) => {
+        await this.plugin.createWorkItem({
+          goalId: goal.id,
+          ...input,
+        });
+      }).open();
+    })
+    
   }
 }
