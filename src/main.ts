@@ -188,13 +188,13 @@ export default class GoalTimelinePlugin extends Plugin {
 
     const workItem = this.data.workItems.find((item) => item.id === workItemId)
     if(!workItem){
-      new Notice(t.goal.validation.notfoundWorkItem);
+      new Notice(t.workItem.validation.notfoundWorkItem);
       return;
     }
 
     const title = input.title?.trim() ?? workItem.title;
     if(title.length === 0){
-      new Notice(t.goal.validation.emptyTitle);
+      new Notice(t.workItem.validation.emptyTitle);
       return;
     }
 
@@ -223,7 +223,7 @@ export default class GoalTimelinePlugin extends Plugin {
     const existingWorkItem = this.data.workItems.find((item) => item.id === workItemId);
 
     if(!existingWorkItem){
-      new Notice(t.goal.validation.notfoundWorkItem);
+      new Notice(t.workItem.validation.notfoundWorkItem);
       return;
     }
 

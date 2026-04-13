@@ -56,7 +56,7 @@ export class CreateWorkItemModal extends Modal{
       });
 
     new Setting(contentEl)
-      .setName(t.goal.form.statusLabel)
+      .setName(t.workItem.form.statusLabel)
       .addDropdown((dropdown) => {
         dropdown.addOption("todo", t.workItem.statusLabels.todo);
         dropdown.addOption("in_progress", t.workItem.statusLabels.in_progress);
@@ -76,12 +76,12 @@ export class CreateWorkItemModal extends Modal{
         const title = this.titleValue.trim();
 
         if (!title) {
-          new Notice(t.goal.validation.emptyTitle);
+          new Notice(t.workItem.validation.emptyTitle);
           return;
         }
 
         if(this.deadlineValue && !this.isValidDateString(this.deadlineValue)) {
-          new Notice(t.goal.validation.invalidDeadline);
+          new Notice(t.workItem.validation.invalidDeadline);
           return;
         }
 

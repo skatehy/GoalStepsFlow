@@ -42,7 +42,6 @@ export type I18nStrings = {
       emptyTitle: string;
       invalidDeadline: string;
       notfoundGoal: string;
-      notfoundWorkItem: string;
     };
 
     statusLabels: Record<GoalStatus, string>;
@@ -55,6 +54,10 @@ export type I18nStrings = {
       deadlineLabel: string;
       statusLabel: string;
     };
+
+    board: {
+      noWorkItem: string;
+    }
 
     validation: {
       emptyTitle: string;
@@ -107,7 +110,6 @@ export const zhCN: I18nStrings = {
       emptyTitle: "目标标题不能为空",
       invalidDeadline: "截止日期格式应为 YYYY-MM-DD",
       notfoundGoal: "未找到目标",
-      notfoundWorkItem: "未找到目标子项",
     },
 
     statusLabels: {
@@ -124,6 +126,10 @@ export const zhCN: I18nStrings = {
       descriptionLabel: "子项描述",
       deadlineLabel: "截止日期",
       statusLabel: "状态",
+    },
+
+    board: {
+      noWorkItem: "暂无目标子项",
     },
 
     validation: {
@@ -182,7 +188,6 @@ export const enUS: I18nStrings = {
       emptyTitle: "Goal title cannot be empty",
       invalidDeadline: "Deadline must be in YYYY-MM-DD format",
       notfoundGoal: "Goal not found",
-      notfoundWorkItem: "WorkItem not found",
     },
 
     statusLabels: {
@@ -201,13 +206,17 @@ export const enUS: I18nStrings = {
       statusLabel: "Status",
     },
 
+    board: {
+      noWorkItem: "No work items yet",
+    },
+    
     validation: {
       emptyTitle: "Goal title cannot be empty",
       invalidDeadline: "Deadline must be in YYYY-MM-DD format",
       notfoundGoal: "Goal not found",
       notfoundWorkItem: "WorkItem not found",
     },
-    
+
     statusLabels: {
       todo: "To do",
       in_progress: "In progress",

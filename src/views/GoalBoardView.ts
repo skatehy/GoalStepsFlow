@@ -4,8 +4,8 @@ import { CreateGoalModal } from "../modals/CreateGoalModal";
 import { DeleteGoalModal } from "../modals/DeleteGoalModal"
 import { getI18nStrings } from "../i18n";
 import GoalTimelinePlugin from "../main";
-import { CreateGoalInput, Goal } from "../types";
-import { CreateWorkItemModal } from "modals/CreateWorkItemModal";
+import { CreateGoalInput, Goal, WorkItem } from "../types";
+import { CreateWorkItemModal } from "../modals/CreateWorkItemModal";
 
 export const VIEW_TYPE_GOAL_BOARD = "goal-board-view";
 
@@ -134,6 +134,7 @@ export class GoalBoardView extends ItemView {
     }
 
     const actionsEl = cardEl.createDiv({ cls: "goal-card-actions" });
+
     const editBtn = actionsEl.createEl("button", {
       cls: "mod-cta",
       text: t.common.edit,
@@ -169,6 +170,43 @@ export class GoalBoardView extends ItemView {
         });
       }).open();
     })
-    
+
+    const workItems = this.plugin.getWorkItemsByGoalId(goal.id);
+    const workItemEl = cardEl.createDiv({cls: "goal-workitem-list"});
+    if(workItems.length === 0){
+      workItemEl.createEl("p", { text:t.workItem.board.noWorkItem});
+      return;
+    }
+    for(const workItem of workItems){
+      this.renderWorkItemCard(workItemEl, workItem, t);
+    }
+
   }
+
+  private renderWorkItemCard(
+    container: HTMLElement,
+    workItem: WorkItem,
+    t: ReturnType<typeof getI18nStrings>
+  ){
+    const itemEl = container.createDiv({ cls: "workitem-card" });
+
+    itemEl.createEl("h4", { text: workItem.title});
+
+    itemEl.createEl("p", {
+      text:`${t.workItem.form.statusLabel}: ${t.workItem.statusLabels[workItem.status]}`,
+    })
+
+    if(workItem.description){
+      itemEl.createEl("p",{
+        text: `${t.workItem.form.descriptionLabel}: ${workItem.description}`,
+      })
+    }  
+
+    if(workItem.deadline){
+      itemEl.createEl("p",{
+        text: `${t.workItem.form.deadlineLabel}: ${workItem.deadline}`, 
+      })
+    }
+  }
+
 }
