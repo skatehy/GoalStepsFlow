@@ -927,7 +927,8 @@ export class GoalBoardView extends ItemView {
 
   private renderGoalCard(container: HTMLElement, goal: Goal, t: ReturnType<typeof getI18nStrings>) {
     const cardEl = container.createDiv({ cls: "goal-card" });
-    this.createEditableTextDisplay("h3", cardEl, goal.title, (targetEl) => {
+    const titleRowEl = cardEl.createDiv({ cls: "goal-card-title-row" });
+    this.createEditableTextDisplay("h3", titleRowEl, goal.title, (targetEl) => {
       this.startInlineTextEdit(targetEl, goal.title, async (value) => {
         await this.saveGoalField(goal.id, { title: value });
       }, {
@@ -935,9 +936,8 @@ export class GoalBoardView extends ItemView {
         requireNonEmpty: true,
       });
     }, "goal-card-title");
-
-    const statusRowEl = cardEl.createDiv({ cls: "goal-card-status-row" });
-    this.createGoalStatusBadge(statusRowEl, goal, t);
+    const titleStatusEl = titleRowEl.createSpan({ cls: "goal-card-title-status" });
+    this.createGoalStatusBadge(titleStatusEl, goal, t);
 
     if (goal.description) {
       this.createEditableTextDisplay(
@@ -1080,7 +1080,9 @@ export class GoalBoardView extends ItemView {
   ) {
     const itemEl = container.createDiv({ cls: "workitem-card goal-card" });
 
-    this.createEditableTextDisplay("h3", itemEl, workItem.title, (targetEl) => {
+    const titleRowEl = itemEl.createDiv({ cls: "goal-card-title-row" });
+
+    this.createEditableTextDisplay("h3", titleRowEl, workItem.title, (targetEl) => {
       this.startInlineTextEdit(
         targetEl,
         workItem.title,
@@ -1093,10 +1095,9 @@ export class GoalBoardView extends ItemView {
         }
       );
     }, "goal-card-title");
-
-    const statusRowEl = itemEl.createDiv({ cls: "goal-card-status-row" });
+    const titleStatusEl = titleRowEl.createSpan({ cls: "goal-card-title-status" });
     const badgeEl = this.createEditableStatusBadge(
-      statusRowEl,
+      titleStatusEl,
       workItem.status,
       t.workItem.statusLabels[workItem.status],
       () => {
